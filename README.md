@@ -5,6 +5,7 @@ This mobile automation framework lets you to Automate android mobile application
 There are some  pre-installation is required for the configuration i.e
 1. You should have the eclipse present with you.
 2. you shoud have java,and maven added in you computer and plase maake sure your environment variable is set up.
+3.Update this maven project before using that is click on project>>maven>>update project.
 
 
 #FrameworkForBeginners 
