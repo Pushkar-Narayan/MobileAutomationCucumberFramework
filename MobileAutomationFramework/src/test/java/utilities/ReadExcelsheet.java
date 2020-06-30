@@ -22,7 +22,6 @@ public class ReadExcelsheet {
 		String [] sArr = null;
 		for(int i=0;i<srow;i++)
 		{
-			
 			Row row = sheet.getRow(i);
 			sArr = new String[row.getLastCellNum()];
 			for(int j=0;i<row.getLastCellNum();j++)
