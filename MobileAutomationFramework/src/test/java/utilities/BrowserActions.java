@@ -25,30 +25,28 @@ public class BrowserActions implements UiActions {
 	
 
 	@Override
-	public void enterText(String sText, String sLocator) {
-		a.until(ExpectedConditions.visibilityOfElementLocated(pm.getLocator(sLocator)));	
+	public void enterText(String sText, String sLocator,String sPageName) {
+		a.until(ExpectedConditions.visibilityOfElementLocated(pm.getLocator(sLocator,sPageName)));	
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		driver.findElement(pm.getLocator(sLocator)).sendKeys(sText);
+		driver.findElement(pm.getLocator(sLocator,sPageName)).sendKeys(sText);
 		
 	}
 
-	public void enterTextAndPressEnter(String sText, String sLocator) {
-		a.until(ExpectedConditions.visibilityOfElementLocated(pm.getLocator(sLocator)));	
+	public void enterTextAndPressEnter(String sText, String sLocator,String sPageName) {
+		a.until(ExpectedConditions.visibilityOfElementLocated(pm.getLocator(sLocator,sPageName)));	
 		try {
 			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-//		driver.getKeyboard();
-		
-		driver.findElement(pm.getLocator(sLocator)).sendKeys(sText+"\\n");
+		driver.findElement(pm.getLocator(sLocator,sPageName)).click();
+		driver.findElement(pm.getLocator(sLocator,sPageName)).sendKeys(sText+"\n");
 	
 //		Map<String, String> EnterKeyEvent  = new HashMap<>();
 //		EnterKeyEvent.put("action", "search");
@@ -61,13 +59,13 @@ public class BrowserActions implements UiActions {
 
 
 	@Override
-	public void clickOnElement(String sLocator) {
+	public void clickOnElement(String sLocator,String sPageName) {
 	
-		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator)));
-		a.until(ExpectedConditions.elementToBeClickable(pm.getLocator(sLocator)));
-		if(presenceOfElement(sLocator))
+		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator,sPageName)));
+		a.until(ExpectedConditions.elementToBeClickable(pm.getLocator(sLocator,sPageName)));
+		if(presenceOfElement(sLocator,sPageName))
 		{
-			   driver.findElement(pm.getLocator(sLocator)).click();
+			   driver.findElement(pm.getLocator(sLocator,sPageName)).click();
 		}
 		else
 		{
@@ -80,16 +78,16 @@ public class BrowserActions implements UiActions {
 
 
 	@Override
-	public void sendEnter(String sLocator) {
+	public void sendEnter(String sLocator,String sPageName) {
 		
 		
 	}
 
 	@Override
-	public String readElementText(String sLocator) {
+	public String readElementText(String sLocator,String sPageName) {
 		
-		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator)));
-		String sText=driver.findElement(pm.getLocator(sLocator)).getText();
+		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator,sPageName)));
+		String sText=driver.findElement(pm.getLocator(sLocator,sPageName)).getText();
 			
 		return sText;
 	}
@@ -101,16 +99,16 @@ public class BrowserActions implements UiActions {
 	}
 	
 	
-	public boolean presenceOfElement(String sLocator)
+	public boolean presenceOfElement(String sLocator,String sPageName)
 	{
-		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator)));
-		driver.findElement(pm.getLocator(sLocator)).isDisplayed();
+		a.until(ExpectedConditions.presenceOfElementLocated(pm.getLocator(sLocator,sPageName)));
+		driver.findElement(pm.getLocator(sLocator,sPageName)).isDisplayed();
 		return true;
 		
 	}
-	public boolean isElementEnable(String sLocator)
+	public boolean isElementEnable(String sLocator,String sPageName)
 	{
-		a.until(ExpectedConditions.invisibilityOfElementLocated(pm.getLocator(sLocator)));
+		a.until(ExpectedConditions.invisibilityOfElementLocated(pm.getLocator(sLocator,sPageName)));
 		
 		return true;
 		

@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.BeforeTest;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -17,7 +16,7 @@ public class BasePage {
 	
 	public AndroidDriver<MobileElement> driver;
 
-	@BeforeTest
+	
 	public AndroidDriver<MobileElement> launchDriver()
 	{
 		
@@ -27,7 +26,8 @@ public class BasePage {
 		dc.setCapability(MobileCapabilityType.DEVICE_NAME, "MI A1");
 		dc.setCapability(MobileCapabilityType.UDID, "007be9590804");
 		dc.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60);
-		dc.setCapability(MobileCapabilityType.APP, "C:/Users/lenovo/Desktop/Demo/src/test/resources/app/Amazon_shopping.apk");
+		dc.setCapability(MobileCapabilityType.APP, System.getProperty("user.dir")+"/src/test/resources/app/Amazon_shopping.apk");
+		
 		dc.setCapability("appPackage", "com.amazon.mShop.android.shopping");
 		dc.setCapability("appActivity", "com.amazon.mShop.splashscreen.StartupActivity");
 		dc.setCapability("unicodeKeyboard", true);

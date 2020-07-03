@@ -8,10 +8,10 @@ import java.util.Properties;
 
 public class ConfigLoader {
 
-	public String getDataFromConfig(String sData)
+	public String getDataFromConfig(String sData,String propFileName)
 	{
 		Properties prop = new Properties();
-		File file = new File("src/test/resources/locators/config.properties");
+		File file = new File(System.getProperty("user.dir")+"/src/test/resources/propertyData/"+propFileName+".properties");
 		FileInputStream Is = null;
 		try {
 			Is = new FileInputStream(file);

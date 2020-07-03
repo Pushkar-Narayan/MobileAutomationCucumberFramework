@@ -1,36 +1,16 @@
 package core;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
 
 import org.openqa.selenium.By;
 public class PageObjectManager{
 	
 	
+	ConfigLoader cl = new ConfigLoader();
 	
-	Properties prop = new Properties();
-	
-	public void loadLocator() throws IOException
-	{
-		File file = new File("src/test/resources/locators/locator.properties");
-		FileInputStream Is = new FileInputStream(file);
-		prop.load(Is);
-		
-	}
-	public By getLocator(String name)
+	public By getLocator(String name,String sPageName)
 	{
 		By by = null;
-		
-		try {
-		    	loadLocator();
-		    } catch (IOException e)
-		      {
-				    System.out.println("properties file not found");
-					e.printStackTrace();
-		      }
-		String myProp =prop.getProperty(name).toString();
+		String myProp=	cl.getDataFromConfig(name, sPageName);
 		
 		String [] ar = myProp.split(";");
 		System.out.println(ar[0]);
