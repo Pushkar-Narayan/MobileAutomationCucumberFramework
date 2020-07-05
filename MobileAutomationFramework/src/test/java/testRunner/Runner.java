@@ -7,7 +7,7 @@ import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features="src/test/resources/features",
 glue= {"stepDefinitions"},
-plugin= {"pretty", "html:Report/Destination"},
+plugin= {"pretty","json:target/Report/cucumber.json","html:target/Report/cucumber-html"},
 tags= { "@Test001" } 
 
 )
